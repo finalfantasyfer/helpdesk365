@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HelpDesk 365 | Suporte Técnico Especializado para Escritórios de Advocacia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a3a6c;
+            --secondary: #53c3e7;
+            --accent: #53c3e7;
+            --light: #f1faee;
+            --dark: #1d3557;
+            --gray: #8d99ae;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo img {
+            height: 50px;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: #53c3e7;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--secondary);
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(26, 58, 108, 0.3);
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(26, 58, 108, 0.4);
+            background: linear-gradient(135deg, var(--dark), var(--primary));
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(35, 159, 216, 0.16), rgba(28, 79, 143, 0.95)), url('https://lp.buildinginfra.com.br/img/Lucid_Realism_long_exposure_time_photography_of_The_image_is_a_2.jpg') no-repeat center center/cover;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .secondary-button {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .secondary-button:hover {
+            background: white;
+            color: var(--primary);
+        }
+        
+        /* Problem Section */
+        .problem {
+            padding: 100px 0;
+            background-color: white;
+            
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: #1d5a99;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #53c3e7;
+        }
+        
+        .problem-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .problem-text {
+            flex: 1;
+        }
+        
+        .problem-text h3 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+        
+        .problem-list {
+            list-style: none;
+            margin: 25px 0;
+        }
+        
+        .problem-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .problem-list li:before {
+            content: '✗';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        
+        .problem-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .problem-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        /* Video Section */
+        .videos {
+            padding: 100px 0;
+            background-color: #f1f7fe;
+        }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .video-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-top: 177.78%; /* 16:9 Aspect Ratio (9/16=0.5625) */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-content {
+            padding: 20px;
+        }
+        
+        .video-content h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .video-content p {
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+        /* Solution Section */
+        .solution {
+            padding: 100px 0;
+            background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+        }
+        
+        .solution-box {
+            background: white;
+            border-radius: 15px;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .solution-box:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: var(--accent);
+        }
+        
+        .solution-box h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .solution-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        /* Product Section */
+        .product {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background: linear-gradient(to bottom right, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+        
+        .product-card h3 {
+            font-size: 1.5rem;
+            color: #1d5a99;
+            margin-bottom: 20px;
+        }
+        
+        .product-features {
+            list-style: none;
+            margin: 25px 0;
+            text-align: center;
+        }
+        
+        .product-features li {
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .product-features li:before {
+            content: '✓ ';
+            position: relative;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin: 20px 0;
+        }
+        
+        .price span {
+            font-size: 1rem;
+            color: var(--gray);
+            font-weight: normal;
+        }
+        
+        /* Benefits Section */
+        .benefits {
+            padding: 100px 0;
+            background: linear-gradient(to bottom, #e9ecef, #f8f9fa);
+        }
+        
+        .benefits-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .benefit-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .benefit-number {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 3rem;
+            font-weight: 800;
+            color: rgba(42, 157, 143, 0.1);
+        }
+        
+        .benefit-card h3 {
+            font-size: 1.5rem;
+            color: #1d5a99;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .benefit-card p {
+            color: #1d5a99;
+            text-align: center;
+            margin-bottom: 20px;
+            display: block;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            unicode-bidi: isolate;
+        }
+        
+        /* Requirements Section */
+        .requirements {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .requirements-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .requirements-list {
+            background: #52c1e536;
+            border-radius: 15px;
+            padding: 40px;
+            margin: 40px 0;
+            text-align: left;
+        }
+        
+        .requirements-list ul {
+            list-style: none;
+        }
+        
+        .requirements-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .requirements-list li:before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        /* Urgency Section */
+        .urgency {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #08243b, #095479);
+            color: white;
+            text-align: center;
+        }
+        
+        .urgency-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .urgency h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .deadline {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #e75353;
+            margin: 20px 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .bonus-box {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .bonus-box h3 {
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+        /* testimony Section */
+        .testimony {
+            padding: 100px 0;
+            background: linear-gradient(to bottom, #e9ecef, #f8f9fa);
+        }
+        
+        .testimony-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimony-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimony-number {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 3rem;
+            font-weight: 800;
+            color: rgba(42, 157, 143, 0.1);
+        }
+        
+        .testimony-card h3 {
+            font-size: 1.5rem;
+            color: #1d5a99;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .testimony-card p {
+            color: #1d5a99;
+            text-align: center;
+            margin-bottom: 20px;
+            display: block;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            unicode-bidi: isolate;
+        }
+        
+         /* Contagem Regressiva */
+        .timing {
+            background-color: #000;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px auto;
+            max-width: 600px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .countdown-item {
+            text-align: center;
+            min-width: 100px;
+        }
+        
+        .countdown-value {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #ff0000;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+            line-height: 1;
+        }
+        
+        .countdown-label {
+            font-size: 1.1rem;
+            color: #fff;
+            text-transform: uppercase;
+            margin-top: 5px;
+            letter-spacing: 1px;
+        }
+        
+        .bonus-box {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 0;
+            text-align: left;
+        }
+        
+        .bonus-box h3 {
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+        
+        .cta-box {
+            background: white;
+            border-radius: 20px;
+            padding: 60px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            
+        }
+        
+        .cta-box h2 {
+            font-size: 2.5rem;
+            color: #1d5a99;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin: 30px 0;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.8rem;
+            }
+            
+            .problem-content {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-headset fa-2x" style="color: var(--accent);"></i>
+                <h1>HelpDesk <span>365</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#problema">O Problema</a></li>
+                    <li><a href="#solucao">Solução</a></li>
+                    <li><a href="#produto">O Produto</a></li>
+                    <li><a href="#beneficios">Benefícios</a></li>
+                    <li><a href="#requisitos">Requisitos</a></li>
+                </ul>
+            </nav>
+            <a href="#cta" class="cta-button">Marcar uma Reunião</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h2>Sua Advocacia Sem Travamentos Técnicos</h2>
+            <p>Suporte especializado para escritórios de advocacia em transformação digital. Resolva problemas com certificados digitais, Java, Microsoft 365 e Windows em tempo real.</p>
+            <div class="hero-buttons">
+                
+                <a href="#solucao" class="secondary-button">Como Funciona</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problema" class="problem">
+        <div class="container">
+            <div class="section-header">
+                <h2>Problemas que Travam sua Advocacia</h2>
+                <p>Minutos parados significam honorários perdidos e prazos comprometidos</p>
+            </div>
+            <div class="problem-content">
+                <div class="problem-text">
+                    <h3>Seu escritório sofre com essas situações?</h3>
+                    <ul class="problem-list">
+                        <li>Advogados paralisados por certificados digitais expirados</li>
+                        <li>Erros de Java no Shodo/PjeOffice atrasando processos</li>
+                        <li>E-mails travados durante petições urgentes</li>
+                        <li>Atualizações do Windows quebrando sistemas essenciais</li>
+                        <li>Falhas de segurança comprometendo dados sensíveis</li>
+                        <li>Perda de produtividade com configurações técnicas</li>
+                    </ul>
+                    <p>Cada minuto perdido com problemas técnicos é <strong>custo processual, honorários perdidos e estresse desnecessário</strong> para sua equipe.</p>
+                </div>
+                <div class="problem-image">
+                    <img src="https://lp.buildinginfra.com.br/img/Leonardo_Kino_XL_Image_is_a_highresolution_color_photograph_fe_0 (1).jpg" alt="Advogado frustrado com problemas técnicos">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solucao" class="solution">
+        <div class="container">
+            <div class="section-header">
+                <h2>Solução Especializada para Escritórios</h2>
+                <p>O HelpDesk 365 foi desenvolvido por especialistas em tecnologia jurídica</p>
+            </div>
+            <div class="solution-box">
+                <h3>HelpDesk 365: Seu "Sócio Técnico" para Operações Jurídicas</h3>
+                <p>Uma solução completa para:</p>
+                <ul class="problem-list">
+                    <li>Resolver problemas críticos (Aplicações Jurídicas, Windows 10/11 e Microsoft 365 Basic/Standard)</li>
+                    <li>Prevenir falhas que travam sua advocacia</li>
+                    <li>Liberar seu time para focar no que importa: casos e clientes</li>
+                </ul>
+                
+                <div class="solution-features">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-laptop-medical"></i>
+                        </div>
+                        <h4>Suporte Remoto</h4>
+                        <p>Atendimento rápido e humano, sem robôs</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Segurança Blindada</h4>
+                        <p>Configuração de MFA e proteção de dados sensíveis</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h4>Especialistas</h4>
+                        <p>Domínio em recursos de tecnologias da área jurídica</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Section -->
+    <section id="produto" class="product">
+        <div class="container">
+            <div class="section-header">
+                <h2>O que é o HelpDesk 365?</h2>
+                <p>Tudo que seu escritório precisa em um único plano</p>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <h3>Helpdesk 365</h3>
+                    <p>Solução completa para escritórios em crescimento</p>
+                    <ul class="product-features">
+                        <li>Suporte remoto para Windows 10/11</li>
+                        <li>Atendimento para Microsoft 365</li>
+                        <li>Suporte para certificados digitais</li>
+                        <li>Até 5 usuários e 5 dispositivos</li>
+                        <li>Ativação em até 30 dias</li>
+                    </ul>
+                    <div class="price">R$ 000<span>/mês</span></div>
+                    <a href="#cta" class="cta-button">Contratar Agora</a>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="beneficios" class="benefits">
+        <div class="container">
+            <div class="section-header">
+                <h2>Diferenciais que Vencem Objeções</h2>
+                <p>Por que nossos clientes confiam no HelpDesk 365</p>
+            </div>
+            <div class="benefits-container">
+                <div class="benefit-card">
+                    <div class="benefit-number"></div>
+                    <h3>Não tem Microsoft 365? Fique em Paz!</h3>
+                    <p>Implementamos tudo para você:</p>
+                    <ul class="product-features">
+                        <li>Domínio profissional @seuescritorio.com.br</li>
+                        <li>Migração de e-mails e arquivos sem perda</li>
+                        <li>Configuração de MFA e segurança básica</li>
+                        <li>Setup completo em todos dispositivos</li>
+                    </ul>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-number"></div>
+                    <h3>Já tem Microsoft 365? Vamos Otimizar!</h3>
+                    <p>Transformamos seu ambiente atual:</p>
+                    <ul class="product-features">
+                        <li>Auditoria gratuita de configurações</li>
+                        <li>Correção de vulnerabilidades críticas</li>
+                        <li>Adequação às melhores práticas jurídicas</li>
+                        <li>Integração imediata com sua operação</li>
+                    </ul>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-number"></div>
+                    <h3>Suporte que Fala a "Língua da Advocacia"</h3>
+                    <p>Especialistas que entendem suas necessidades:</p>
+                    <ul class="product-features">
+                        <li>10+ anos em TI jurídica</li>
+                        <li>Resolução direta de problemas comuns no meio jurídico</li>
+                        <li>Atendimento humano e remoto sem robôs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Requirements Section -->
+    <section id="requisitos" class="requirements">
+        <div class="container">
+            <div class="section-header">
+                <h2>Requisitos para Ser Cliente</h2>
+                <p>Esta oferta é exclusiva para escritórios de advocacia</p>
+            </div>
+            <div class="requirements-content">
+                <p>O HelpDesk 365 foi desenvolvido especificamente para escritórios que buscam transformação digital e eficiência operacional.</p>
+                
+                <div class="requirements-list">
+                    <h3>Esta oferta é EXCLUSIVA para:</h3>
+                    <ul>
+                        <li>⚖️ Escritórios de advocacia iniciantes (em estruturação operacional)</li>
+                        <li>⚖️ Escritórios em transformação digital (que buscam eficiência técnica)</li>
+                    </ul>
+                </div>
+                
+                <div class="requirements-list">
+                    <h3>Condições obrigatórias:</h3>
+                    <ul>
+                        <li>Limite de 5 dispositivos (garante atenção personalizada)</li>
+                        <li>Contrato de 12 meses (estabilidade operacional)</li>
+                        <li>Disponibilidade para implantação inicial (até 30 dias)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Urgency Section -->
+    <section class="urgency">
+        <div class="container urgency-content">
+            <h2>Oferta com Prazo Limitado!</h2>
+            <p>Os primeiros a agirem garantem condições especiais e bônus exclusivos</p>
+            
+            <div class="deadline">Prazo Final: 30/10/2025 ás 00:00:00</div>
+            
+            <!-- Contagem Regressiva -->
+            <div class="timing">
+                <div class="countdown">
+                    <div class="countdown-item">
+                        <div class="countdown-value" id="days">00</div>
+                        <div class="countdown-label">Dias</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-value" id="hours">00</div>
+                        <div class="countdown-label">Horas</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-value" id="minutes">00</div>
+                        <div class="countdown-label">Minutos</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-value" id="seconds">00</div>
+                        <div class="countdown-label">Segundos</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bonus-box">
+                <h3>Bônus para os 10 primeiros contratos:</h3>
+                <ul class="product-features">
+                    <li>Consultoria em aquisição de tecnologia (softwares, notebooks, redes)</li>
+                    <li>Conexão com parceiros Dell/Microsoft (descontos exclusivos)</li>
+                    <li>Diagnóstico completo de segurança digital</li>
+                </ul>
+            </div>
+            
+            <p>Ativação em 30 dias? Só enquanto houver vagas para dedicar atenção máxima ao seu escritório!</p>
+            <a href="#cta" class="cta-button" style="margin-top: 30px;">Garantir está oportunidade agora</a>
+        </div>
+    </section>
+    
+<!-- Video Section -->
+    <section id="videos" class="videos">
+        <div class="container">
+            <div class="section-header">
+                <h2>O que os nossos clientes dizem da nós</h2>
+                <p>Conheça casos e clientes reais de sucesso e como nós o atendemos</p>
+            </div>
+            
+            <div class="video-grid">
+                <div class="video-card">
+                    <div class="video-container">
+                        <!-- Vídeo 16:9 - Suporte Remoto -->
+                        <iframe width="462" height="821" src="https://www.youtube.com/embed/uvr-ZCGOMC8" title="VideoTeste" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-content">
+                        <h3>Sandra Brandão</h3>
+                        <p>Advogado e Fundadora da BOG Advogados</p>
+                        <br>
+                        <a href="https://www.bog.adv.br" target=_blank><img src="https://static.wixstatic.com/media/8f3b9d_f8dfb437a9be4d09a27dc6279d9e8dff~mv2.jpg/v1/fill/w_50,h_50,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/10.jpg" width=25%></a>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-container">
+                        <!-- Vídeo 16:9 - Instalação -->
+                        <iframe width="462" height="821" src="https://www.youtube.com/embed/uvr-ZCGOMC8" title="VideoTeste" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-content">
+                        <h3>Cesar Souza</h3>
+                        <p>Advogado e Fundador da SET Advogados</p>
+                        <br>
+                        <a href="https://www.set.adv.br" target=_blank><img src="https://set.adv.br/wp-content/uploads/2021/09/cropped-logo-souza-e-terra-300x185.png" width=40%></a>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-container">
+                        <!-- Vídeo 16:9 - Depoimento -->
+                        <iframe width="462" height="821" src="https://www.youtube.com/embed/uvr-ZCGOMC8" title="VideoTeste" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-content">
+                        <h3>Pedro Rinaldo</h3>
+                        <p>Sócio da Rinaldo Janurario Lotti</p>
+                        <br>
+                        <a href="https://www.rinaldolotti.com.br" target=_blank><img src="https://lp.buildinginfra.com.br/img/LogoRinaldoLotti.png" width=50%></a>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-container">
+                        <!-- Vídeo 16:9 - Depoimento -->
+                        <iframe width="462" height="821" src="https://www.youtube.com/embed/uvr-ZCGOMC8" title="VideoTeste" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-content">
+                        <h3>Paula Maragno</h3>
+                        <p>Sócia e Fundadora da Maragno Advogados</p>
+                        <br>
+                        <a href="https://www.maragno.adv.br" target=_blank><img src="https://maragno.adv.br/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2022/11/icones_M-e1692099119392.png.webp" width=25%></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta" class="cta-section">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Vamos agendar uma reunião</h2>
+               <p><a href="https://forms.cloud.microsoft/r/kLzmCnLhez" class="cta-button">Preencher Formulário</a></p>
+               <br>
+               <p>Preencha o formulário e receba em menos de 24h o nosso contato</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Buildinginfra</h3>
+                    <p>Sua advocacia sem travamentos técnicos. Suporte especializado para escritórios em transformação digital.</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/company/buildinginfra"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://instagram.com/building.infra"><i class="fab fa-instagram"></i></a>
+                        <a href="https://api.whatsapp.com/send?phone=5511965701370"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#problema">O Problema</a></li>
+                        <li><a href="#solucao">Solução</a></li>
+                        <li><a href="#produto">Planos</a></li>
+                        <li><a href="#beneficios">Benefícios</a></li>
+                        <li><a href="#requisitos">Requisitos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> ti@buildinginfra.com.br</li>
+                        <li><i class="fab fa-whatsapp"></i> (11) 96570-1370</li>
+                        <li><i class="fas fa-clock"></i> Seg-Sex: 9h às 18h</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Parceiros</h3>
+                    <ul>
+                        <li>Microsoft Brasil</li>
+                        <li>Dell Technologies</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Buildinginfra. Todos os direitos reservados. CNPJ: 34.719.069/0001-91</p>
+                <p><a href="https://buildinginfra.com.br/privacy.html">Política de Privacidade | Termos de Uso</a></p>
+                <p>As fotos neste site foram geradas por Inteligencia artificial, os videos de nossos clientes são reais.</p>
+            </div>
+        </div>
+    </footer>
+    
+        <script>
+        // Animação suave para links de navegação
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Animação para elementos ao rolar
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        });
+        
+        const hiddenElements = document.querySelectorAll('.problem-content, .solution-box, .product-card, .benefit-card, .video-card');
+        hiddenElements.forEach((el) => {
+            el.classList.add('hidden');
+            observer.observe(el);
+        });
+        
+        // Estilos para animações
+        const style = document.createElement('style');
+        style.innerHTML = `
+            .hidden {
+                opacity: 0;
+                transform: translateY(30px);
+                transition: all 0.8s ease-out;
+            }
+            
+            .show {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Contagem Regressiva
+        function updateCountdown() {
+            // Definir a data-alvo: 30 de novembro de 2025 às 00:00:00
+            const targetDate = new Date('November 30, 2025 00:00:00').getTime();
+            const now = new Date().getTime();
+            const timeLeft = targetDate - now;
+            
+            // Calcular dias, horas, minutos e segundos
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            
+            // Atualizar os elementos HTML
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            
+            // Verificar se a contagem regressiva terminou
+            if (timeLeft < 0) {
+                clearInterval(countdownInterval);
+                document.querySelector('.timing').innerHTML = '<div class="countdown-value">Oferta Expirada!</div>';
+            }
+        }
+        
+        // Atualizar a contagem regressiva a cada segundo
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown(); // Chamar imediatamente para evitar atraso inicial
+    </script>
+    
+</body>
+</html>
